@@ -1,0 +1,13 @@
+*** Settings ***
+Resource          testflow.txt
+Library           Selenium2Library
+
+*** Test Cases ***
+登陆
+    登陆    wangshuang    wangshuang
+
+充值提现
+    充值提现    610000061854
+
+水产交易
+    水产交易    610000398672

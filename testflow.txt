@@ -1,0 +1,40 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+登陆
+    [Arguments]    ${name_content}    ${pwd_content}
+    open browser    http://rltp.runtongnongpi.com:9020/cms    chrome
+    Input Text    id=userName    ${name_content}
+    Input Text    id=password    ${pwd_content}
+    Click Button    id=submit
+    Maximize Browser Window
+    Sleep    2
+
+充值提现
+    [Arguments]    ${cardNo_content}
+    Click Element    xpath=/html/body/div[1]/div[1]/div/ul[2]/li[1]/a/cite
+    sleep    2
+    Click Element    xpath=//*[@id="navBar"]/ul/li[9]/a
+    sleep    1
+    Click Element    xpath=//*[@id="navBar"]/ul/li[9]/dl/dd[4]/a
+    Select Frame    xpath=//*[@id="top_tabs_box"]/div/div[2]/iframe
+    Sleep    2
+    Input Text    id=cardNo    ${cardNo_content}
+    Click Button    id=query
+    Sleep    2
+    Click Element    xpath=/html/body/div[1]/div[1]/div[4]/div[2]/table/tbody/tr/td/div/a[2]
+    Select Frame    xpath=//*[@id="layui-layer-iframe1"]
+    Input Text    xpath=//*[@id="form1"]/div[3]/div/input    20
+    Sleep    2
+    Click Element    xpath=//*[@id="form1"]/div[6]/a[1]
+
+水产交易
+    [Arguments]    ${reCardNo_content}
+    Click Element    xpath=/html/body/div[1]/div[1]/div/ul[2]/li[1]/a/cite
+    Click Element    xpath=//*[@id="navBar"]/ul/li[11]/a/cite
+    Sleep    2
+    Click Element    xpath=//*[@id="navBar"]/ul/li[11]/dl/dd[1]/a/cite
+    Select Frame    xpath=//*[@id="top_tabs_box"]/div/div[2]/iframe
+    Input Text    xpath=//*[@id="recCardNo"]    ${reCardNo_content}
+    Click Element    xpath=//*[@id="recCardNo"]
